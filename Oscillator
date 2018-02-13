@@ -6,11 +6,13 @@ var freqF = 246;
 var oscA, oscS, oscD, oscF;
 
 var playing = false;
+var words = 'blank' // I added this
 
 function setup() {
   backgroundColor = color(255, 0, 255);
   textAlign(CENTER);
-	oscA = new p5.Oscillator();
+  
+  oscA = new p5.Oscillator();
   oscA.setType('triangle');
   oscA.freq(freqA);
   oscA.amp(0);
@@ -35,29 +37,38 @@ function setup() {
   oscF.start();
 }
 
-function draw() {
-  background(backgroundColor)
-  text('click here,\nthen press a\n key to play', width / 2, 40);
-}
-
 function keyPressed() {
   print("got key press for ", key);
   var osc;
   if (key == 'A') {
     osc = oscA;
+		words = 'A' // and these 
   } else if (key == 'S') {
     osc = oscS;
+		words = 'S'
   } else if (key == 'D') {
     osc = oscD;
+		words = 'D'
   } else if (key == 'F') {
     osc = oscF;
+		words = 'F'
   }
   if (osc) {
     osc.amp(0.5, 0.1);
     playing = true;
-    backgroundColor = color(0, 255, 255);
   }
 }
+
+function draw() {
+  if (playing) {
+			background(200, 255, 255)
+			text(words, width / 2, 40); // and these 
+  } else {
+    background(255, 0, 255);
+	text('click here,\nthen press A/S/D/F\n keys to play', width / 2, 40)
+	}
+}
+
 
 function keyReleased() {
   print("got key release for ", key);
@@ -74,6 +85,5 @@ function keyReleased() {
   if (osc) {
     osc.amp(0, 0.5);
     playing = false;
-    backgroundColor = color(255, 0, 255);
   }
 }
