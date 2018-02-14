@@ -1,3 +1,8 @@
+//this intrument works as the person types. 
+//color when key is pressed is interactive with mouse position. 
+//sound and position of rectangle appeared depends on key pressed.
+
+
 var freqA = 174;
 var freqS = 196;
 var freqD = 220;
@@ -12,11 +17,12 @@ var playingA = false;
 var	playingS = false;
 var	playingD = false;
 var	playingF = false;
+var sentence = ''; // aj
 
 
 function setup() {
   backgroundColor = color(255, 0, 255);
-  textAlign(CENTER);
+  textAlign(RIGHT); // aj
   
   oscA = new p5.Oscillator();
   oscA.setType('triangle');
@@ -44,70 +50,78 @@ function setup() {
 }
 
 function keyPressed() {
-  print("got key press for ", key);
   var osc;
-  if (key == 'A') {
+  if (key == 'A'||key==' '||key=='Q'||key=='Z'||key=='T'||key=='G'||key=='B'||key=='O'||key=='L') { // aj
     osc = oscA;
-		words = 'A' // and these 
-		playingA = true;
-  } else if (key == 'S') {
+		playingA = true; // aj
+		sentence = sentence +key; // aj
+		words = sentence; // aj
+
+  } 
+		else if (key == 'S'||key==','||key=='W'||key=='X'||key=='Y'||key=='H'||key=='N'||key=='P') { // aj
     osc = oscS;
-		words = 'S';
-		playingS = true;
-  } else if (key == 'D') {
+		playingS = true; // aj
+		sentence = sentence +key // aj
+		words = sentence; // aj
+
+  } 
+		else if (key == 'D'||key=='.'||key=='E'||key=='C'||key=='U'||key=='J'||key=='M') { // aj
     osc = oscD;
-		words = 'D';
-		playingD = true;
-  } else if (key == 'F') {
+		playingD = true; // aj
+		sentence = sentence +key // aj
+		words = sentence; // aj
+  } 
+		else if (key == 'F'||key=='K'||key=='R'||key=='V'||key=='I') { // aj
     osc = oscF;
-		words = 'F';
-		playingF = true;
+		playingF = true; // aj
+		sentence = sentence +key // aj
+		words = sentence; // aj
+
   }
   if (osc) {
     osc.amp(0.5, 0.1);
     playing = true;
-		noStroke();
+		noStroke(); // aj
   }
 }
 
 function draw() {
   if (playingA) {
-			background(200-mouseY, 255-mouseX, 255+mouseX) 
-   		rect(0, 0, width/4, height);
-		  text(words, width / 2, 40); // and these
+			background(200-mouseY, 255-mouseX, 255+mouseX) // aj
+   		rect(0, 0, width/4, height); // aj
+		  text(words, width, 40); // aj
   } 
 	else if (playingS) {
-			background(200+mouseX, 255-mouseX, 255-mouseX)			
-   		rect(width/4, 0, width/4, height);
-			text(words, width / 2, 40); // and these 
+			background(200+mouseX, 255-mouseX, 255-mouseX) // aj		
+   		rect(width/4, 0, width/4, height); // aj
+			text(words, width, 40); // aj
   } 
 	else if (playingD) {
-			background(200-mouseY, 255+mouseX, 255-mouseX)
-   		rect(width/2, 0, width/4, height);
-			text(words, width / 2, 40); // and these 
+			background(200-mouseY, 255+mouseX, 255-mouseX) // aj
+   		rect(width/2, 0, width/4, height); // aj
+			text(words, width, 40); // aj
   } 
 	else if (playingF) {
-			background(200+mouseX, 255-mouseX, 255+mouseX)
-   		rect(width*3/4, 0, width/4, height);
-			text(words, width / 2, 40); // and these 
+			background(200+mouseX, 255-mouseX, 255+mouseX) // aj
+   		rect(width*3/4, 0, width/4, height); // aj
+			text(words, width, 40); // aj
   } 
 	else {
     background(255, 0, 255);
-	text('click here,\nthen press A/S/D/F\n keys to play', width / 2, 40)
+	text(sentence, width, 40) // aj
 	}
 }
 
 
 function keyReleased() {
-  print("got key release for ", key);
   var osc;
-  if (key == 'A') {
+  if (key == 'A'||key==' '||key=='Q'||key=='Z'||key=='T'||key=='G'||key=='B'||key=='O'||key=='L') { // aj
     osc = oscA;
-  } else if (key == 'S') {
+  } else if (key == 'S'||key==','||key=='W'||key=='X'||key=='Y'||key=='H'||key=='N'||key=='P') { // aj
     osc = oscS;
-  } else if (key == 'D') {
+  } else if (key == 'D'||key=='.'||key=='E'||key=='C'||key=='U'||key=='J'||key=='M') { // aj
     osc = oscD;
-  } else if (key == 'F') {
+  } else if (key == 'F'||key=='K'||key=='R'||key=='V'||key=='I') { // aj
     osc = oscF;
   }
   if (osc) {
