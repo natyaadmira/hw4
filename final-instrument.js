@@ -2,15 +2,15 @@
 //color when key is pressed is interactive with mouse position. 
 //sound and position of rectangle appeared depends on key pressed.
 
-var freqA = 174;
-var freqS = 196;
-var freqD = 220;
-var freqF = 246;
+
+var freqA = 262;
+var freqS = 294;
+var freqD = 330;
+var freqF = 349;
 
 var oscA, oscS, oscD, oscF;
 
 var playing = false;
-var words = 'blank' // I added this
 var osc = null;
 var playingA = false;
 var	playingS = false;
@@ -21,7 +21,7 @@ var sentence = ''; // aj
 
 function setup() {
 	
-  createCanvas(600,600);
+  createCanvas(400,400);
   textAlign(RIGHT); // aj
   textSize(100);
 	textStyle(BOLD);
@@ -86,7 +86,6 @@ function keyPressed() {
 function draw() {
   if (playingA) {
    		rect(0+(width/8)/2, height-(height/3), width/8, height/3); // aj
-		
   } 
 	if (playingS) {
    		rect(width/4+(width/8)/2, height-(height/3), width/8, height/3); // aj
@@ -101,8 +100,8 @@ function draw() {
 	//	text(sentence, width, 150) // aj
 	}
 	else {
-    background(200-mouseY, 255+mouseX, 255-mouseX)
-	text(sentence, width, 150) // aj
+    background(50+mouseY, 50+mouseX, 100-mouseX)
+		text(sentence, width, 150) // aj
 	}
 }
 
@@ -125,6 +124,5 @@ function keyReleased() {
   if (osc) {
     osc.amp(0, 0.5);
     playing = false;
-
   }
 }
