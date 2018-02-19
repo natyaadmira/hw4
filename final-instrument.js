@@ -21,10 +21,12 @@ var sentence = ''; // aj
 
 
 function setup() {
+	
   createCanvas(400,300);
   backgroundColor = color(255, 0, 255);
   textAlign(RIGHT); // aj
-  
+  textSize(100);
+	textStyle(BOLD);
   oscA = new p5.Oscillator();
   oscA.setType('triangle');
   oscA.freq(freqA);
@@ -88,28 +90,29 @@ function keyPressed() {
 
 function draw() {
   if (playingA) {
+			
 			background(200-mouseY, 255-mouseX, 255+mouseX) // aj
    		rect(0, 0, width/4, height); // aj
-		  text(words, width, 40); // aj
+		  text(words, width, 150); // aj
   } 
 	else if (playingS) {
 			background(200+mouseX, 255-mouseX, 255-mouseX) // aj		
    		rect(width/4, 0, width/4, height); // aj
-			text(words, width, 40); // aj
+			text(words, width, 150); // aj
   } 
 	else if (playingD) {
 			background(200-mouseY, 255+mouseX, 255-mouseX) // aj
    		rect(width/2, 0, width/4, height); // aj
-			text(words, width, 40); // aj
+			text(words, width, 150); // aj
   } 
 	else if (playingF) {
 			background(200+mouseX, 255-mouseX, 255+mouseX) // aj
    		rect(width*3/4, 0, width/4, height); // aj
-			text(words, width, 40); // aj
+			text(words, width, 150); // aj
   } 
 	else {
     background(255, 0, 255);
-	text(sentence, width, 40) // aj
+	text(sentence, width, 150) // aj
 	}
 }
 
