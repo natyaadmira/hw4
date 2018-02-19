@@ -23,10 +23,10 @@ var sentence = ''; // aj
 function setup() {
 	
   createCanvas(400,300);
-  backgroundColor = color(255, 0, 255);
   textAlign(RIGHT); // aj
   textSize(100);
 	textStyle(BOLD);
+	fill(51);
   oscA = new p5.Oscillator();
   oscA.setType('triangle');
   oscA.freq(freqA);
@@ -58,27 +58,23 @@ function keyPressed() {
     osc = oscA;
 		playingA = true; // aj
 		sentence = sentence +key; // aj
-		words = sentence; // aj
 
   } 
-		else if (key == 'S'||key==','||key=='W'||key=='X'||key=='Y'||key=='H'||key=='N'||key=='P') { // aj
+		 if (key == 'S'||key==','||key=='W'||key=='X'||key=='Y'||key=='H'||key=='N'||key=='P') { // aj
     osc = oscS;
 		playingS = true; // aj
 		sentence = sentence +key // aj
-		words = sentence; // aj
 
   } 
-		else if (key == 'D'||key=='.'||key=='E'||key=='C'||key=='U'||key=='J'||key=='M') { // aj
+		 if (key == 'D'||key=='.'||key=='E'||key=='C'||key=='U'||key=='J'||key=='M') { // aj
     osc = oscD;
 		playingD = true; // aj
 		sentence = sentence +key // aj
-		words = sentence; // aj
   } 
-		else if (key == 'F'||key=='K'||key=='R'||key=='V'||key=='I') { // aj
+		 if (key == 'F'||key=='K'||key=='R'||key=='V'||key=='I') { // aj
     osc = oscF;
 		playingF = true; // aj
 		sentence = sentence +key // aj
-		words = sentence; // aj
 
   }
   if (osc) {
@@ -90,28 +86,23 @@ function keyPressed() {
 
 function draw() {
   if (playingA) {
-			
-			background(200-mouseY, 255-mouseX, 255+mouseX) // aj
-   		rect(0, 0, width/4, height); // aj
-		  text(words, width, 150); // aj
+   		rect(0+(width/8)/2, height-(height/3), width/8, height/3); // aj
+		
   } 
-	else if (playingS) {
-			background(200+mouseX, 255-mouseX, 255-mouseX) // aj		
-   		rect(width/4, 0, width/4, height); // aj
-			text(words, width, 150); // aj
+	if (playingS) {
+   		rect(width/4+(width/8)/2, height-(height/3), width/8, height/3); // aj
   } 
-	else if (playingD) {
-			background(200-mouseY, 255+mouseX, 255-mouseX) // aj
-   		rect(width/2, 0, width/4, height); // aj
-			text(words, width, 150); // aj
+	if (playingD) {
+   		rect(width/2+(width/8)/2, height-(height/3), width/8, height/3); // aj
   } 
-	else if (playingF) {
-			background(200+mouseX, 255-mouseX, 255+mouseX) // aj
-   		rect(width*3/4, 0, width/4, height); // aj
-			text(words, width, 150); // aj
+	if (playingF) {
+   		rect(width*3/4+(width/8)/2, height-(height/3), width/8, height/3); // aj
   } 
+	if (playingA||playingS||playingD||playingF){
+	//	text(sentence, width, 150) // aj
+	}
 	else {
-    background(255, 0, 255);
+    background(200-mouseY, 255+mouseX, 255-mouseX)
 	text(sentence, width, 150) // aj
 	}
 }
@@ -121,19 +112,20 @@ function keyReleased() {
   var osc;
   if (key == 'A'||key==' '||key=='Q'||key=='Z'||key=='T'||key=='G'||key=='B'||key=='O'||key=='L') { // aj
     osc = oscA;
-  } else if (key == 'S'||key==','||key=='W'||key=='X'||key=='Y'||key=='H'||key=='N'||key=='P') { // aj
+		playingA = false;
+  }   if (key == 'S'||key==','||key=='W'||key=='X'||key=='Y'||key=='H'||key=='N'||key=='P') { // aj
     osc = oscS;
-  } else if (key == 'D'||key=='.'||key=='E'||key=='C'||key=='U'||key=='J'||key=='M') { // aj
+		playingS = false;
+  }   if (key == 'D'||key=='.'||key=='E'||key=='C'||key=='U'||key=='J'||key=='M') { // aj
     osc = oscD;
-  } else if (key == 'F'||key=='K'||key=='R'||key=='V'||key=='I') { // aj
+		playingD = false;
+  }   if (key == 'F'||key=='K'||key=='R'||key=='V'||key=='I') { // aj
     osc = oscF;
+		playingF = false;
   }
   if (osc) {
     osc.amp(0, 0.5);
     playing = false;
-		playingA = false;
-		playingS = false;
-		playingD = false;
-		playingF = false;
+
   }
 }
