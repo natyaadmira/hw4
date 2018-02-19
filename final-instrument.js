@@ -2,7 +2,6 @@
 //color when key is pressed is interactive with mouse position. 
 //sound and position of rectangle appeared depends on key pressed.
 
-
 var freqA = 174;
 var freqS = 196;
 var freqD = 220;
@@ -22,7 +21,7 @@ var sentence = ''; // aj
 
 function setup() {
 	
-  createCanvas(400,300);
+  createCanvas(600,600);
   textAlign(RIGHT); // aj
   textSize(100);
 	textStyle(BOLD);
