@@ -21,7 +21,7 @@ var sentence = ''; // aj
 
 function setup() {
 	
-  createCanvas(400,400);
+  createCanvas(600,600);
   textAlign(RIGHT); // aj
   textSize(100);
 	textStyle(BOLD);
